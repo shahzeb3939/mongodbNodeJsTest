@@ -36,7 +36,7 @@ describe('Testing Author Model/Collection', () => {
 
     it('Should update the age of secondAuthor', async () => {
         await Author.findOne({ name: 'secondAuthor'}).then((doc) => {
-            doc.age = 77;
+            doc.age = 9;
             doc.save()
         })
     })
