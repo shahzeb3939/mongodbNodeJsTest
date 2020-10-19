@@ -19,13 +19,28 @@ describe('Database Testing', function(){
         // console.log(mongoose.connection.id) 
 
         var userSchema = new mongoose.Schema({
-            firstName: String
+            email: String,
+            password: String,
+            firstName: String,
+            lastName: String,
+            primaryAccount: Boolean,
+            phoneNumber:String,
+            emailVerified: Boolean
         });
 
         var deviceSchema = new mongoose.Schema({
+            deviceId: String,
+            osSpecificUniqueId: String,
+            os: String,
+            osVersion: String,
+            osBuild: String,
+            macAddress: String,
+            logins: String
         });
 
         var kidSchema = new mongoose.Schema({
+            device: deviceSchema,
+            login: String
         });
 
         var accountSchema = new mongoose.Schema({
@@ -38,11 +53,18 @@ describe('Database Testing', function(){
 
         console.log(mongoose.connection.modelNames())
         console.log(mongoose.connection.id)
-
+        console.log(accountModel)
+        
         // console.log(accountModel.findOne({ firstName: "Dave" }))
         // console.log(accountModel.findOne({ users: {firstName: "Dave"} }))
    
-        console.log(mongoose.connection.db)
+        // console.log(mongoose.connection.db)
+
+        await accountModel.find().then((res) => {
+            console.log(res);
+        })
+
+        
 
     })
 
